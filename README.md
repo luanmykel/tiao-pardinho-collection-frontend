@@ -85,8 +85,10 @@ docker compose up --build -d
 
 - Acesso: http://localhost:8080/
 - Admin: http://localhost:8080/admin
-- Usuário: admin@teste.com
-- Senha:   secret123
+```
+Usuário: admin@teste.com
+Senha:   secret123
+```
 
 O serviço utiliza **Nginx** como servidor web e proxy para o backend, configurado para:
 
@@ -98,8 +100,8 @@ O serviço utiliza **Nginx** como servidor web e proxy para o backend, configura
 
 ## Live Demo
 
-**[Collection Tião Carreiro & Pardinho](https://collection.lmdev.space/)**
-**[Collection Tião Carreiro & Pardinho - Admin](https://collection.lmdev.space/admin)**
+- **[Collection Tião Carreiro & Pardinho](https://collection.lmdev.space/)**
+- **[Collection Tião Carreiro & Pardinho - Admin](https://collection.lmdev.space/admin)**
 
 ### Credenciais de Acesso
 
