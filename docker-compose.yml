@@ -10,7 +10,7 @@ services:
 
   collection-web:
     build:
-      context: .
+      context: https://github.com/luanmykel/tiao-pardinho-collection-frontend.git#main
       dockerfile: Dockerfile
       args:
         VITE_API_URL: /api
