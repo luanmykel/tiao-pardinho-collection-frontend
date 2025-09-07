@@ -1,10 +1,6 @@
 import { api } from "./api";
 import { API_ROUTES } from "./routes";
 
-export async function deleteSongById(id: number) {
-  await api.delete(`${API_ROUTES.songs}/${id}`);
-}
-
 export async function fetchTopSongs(limit = 5) {
   const { data } = await api.get(`${API_ROUTES.songs}/top`, {
     params: { limit },
@@ -40,4 +36,18 @@ export async function fetchAllSongsPublic() {
     p += 1;
   }
   return acc;
+}
+
+export async function createSongFromYoutube(payload: { youtube: string }) {
+  const { data } = await api.post(`${API_ROUTES.songs}/add`, payload);
+  return data;
+}
+
+export async function deleteSongById(id: number) {
+  await api.delete(`${API_ROUTES.songs}/${id}`);
+}
+
+export async function updateSongTitle(id: number, payload: { title: string }) {
+  const { data } = await api.patch(`${API_ROUTES.songs}/${id}`, payload);
+  return data;
 }

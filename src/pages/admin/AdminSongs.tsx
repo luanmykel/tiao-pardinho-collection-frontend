@@ -1,6 +1,12 @@
 import { useState } from "react";
-import { IconCheck, IconTrash, IconX } from "@tabler/icons-react";
-import { Tabs, ActionIcon, Group } from "@mantine/core";
+import {
+  IconCheck,
+  IconTrash,
+  IconX,
+  IconPlus,
+  IconPencil,
+} from "@tabler/icons-react";
+import { Tabs, ActionIcon, Group, Button } from "@mantine/core";
 import { useYoutubeViewer, ServerTable } from "@/components";
 import { formatViews } from "@/utils";
 import {
@@ -12,12 +18,16 @@ import {
 import { useConfirmAndRun } from "@/hooks";
 import { approveSuggestion, rejectSuggestion, deleteSongById } from "@/api";
 import type { Song, Suggestion, TableColumn } from "@/types";
+import { AddSongModal, EditSongTitleModal } from "@/components/modals/admin";
 
 export function AdminSongs() {
   const { open } = useYoutubeViewer();
   const { confirmAndRun, ConfirmUI } = useConfirmAndRun();
 
   const [reload, setReload] = useState(0);
+  const [openAdd, setOpenAdd] = useState(false);
+  const [editSong, setEditSong] = useState<Song | null>(null);
+  const bump = () => setReload((n) => n + 1);
 
   async function handleApprove(id: number) {
     await confirmAndRun(
@@ -141,15 +151,33 @@ export function AdminSongs() {
               endpoint="/songs"
               queryKey={["songs", reload]}
               columns={songCols}
-              actions={(s) => (
-                <ActionIcon
-                  variant="light"
-                  color="red"
-                  title="Excluir"
-                  onClick={() => handleDeleteSong(s.id)}
+              toolbarRight={
+                <Button
+                  leftSection={<IconPlus size={16} />}
+                  onClick={() => setOpenAdd(true)}
                 >
-                  <IconTrash size={18} />
-                </ActionIcon>
+                  Adicionar
+                </Button>
+              }
+              actions={(s) => (
+                <Group gap="xs" justify="flex-end" wrap="wrap">
+                  <ActionIcon
+                    variant="light"
+                    color="blue"
+                    title="Editar título"
+                    onClick={() => setEditSong(s)}
+                  >
+                    <IconPencil size={18} />
+                  </ActionIcon>
+                  <ActionIcon
+                    variant="light"
+                    color="red"
+                    title="Excluir"
+                    onClick={() => handleDeleteSong(s.id)}
+                  >
+                    <IconTrash size={18} />
+                  </ActionIcon>
+                </Group>
               )}
               actionsColHeader="Ações"
               emptyText="Nenhuma música cadastrada."
@@ -185,6 +213,25 @@ export function AdminSongs() {
       </Tabs>
 
       {ConfirmUI}
+      <AddSongModal
+        open={openAdd}
+        onClose={() => setOpenAdd(false)}
+        onSaved={() => {
+          setOpenAdd(false);
+          bump();
+        }}
+      />
+
+      {editSong && (
+        <EditSongTitleModal
+          song={editSong}
+          onClose={() => setEditSong(null)}
+          onSaved={() => {
+            setEditSong(null);
+            bump();
+          }}
+        />
+      )}
     </>
   );
 }
