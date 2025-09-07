@@ -83,11 +83,10 @@ docker compose up --build
 docker compose up --build -d
 ```
 
-Acesso: http://localhost:8080/
-
-Admin: http://localhost:8080/admin
-Usuário: admin@teste.com
-Senha:   secret123
+- Acesso: http://localhost:8080/
+- Admin: http://localhost:8080/admin
+- Usuário: admin@teste.com
+- Senha:   secret123
 
 O serviço utiliza **Nginx** como servidor web e proxy para o backend, configurado para:
 
