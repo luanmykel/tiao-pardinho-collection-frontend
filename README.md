@@ -5,7 +5,7 @@ com layout responsivo e integração por API REST com o backend.
 
 ---
 
-### Frameworks e Bibliotecas Principais
+### Frameworks e Bibliotecas
 
 - **React 19** – Base da SPA.
 - **React Router DOM** – Navegação entre páginas.
@@ -18,16 +18,10 @@ com layout responsivo e integração por API REST com o backend.
 - **TanStack React Query** – Gerenciamento de estado assíncrono e cache.
 - **Axios** – Cliente HTTP para a API REST.
 - **NProgress** – Indicador de carregamento.
-
-### Testes
-
 - **Vitest** – Test runner.
 - **Testing Library React** – Testes de componentes.
 - **Jest DOM** – Matchers adicionais para DOM.
 - **User Event** – Simulação de interações.
-
-### Estilo e Qualidade
-
 - **ESLint + Plugins** – Padronização de código.
 - **Prettier** – Formatação consistente.
 - **Emotion** – Estilização com CSS-in-JS.
@@ -55,6 +49,9 @@ com layout responsivo e integração por API REST com o backend.
 
 ### Desenvolvimento Local
 
+#### Requisitos
+Node.js 20+ e npm 10+
+
 ```bash
 git clone https://github.com/luanmykel/tiao-pardinho-collection-frontend.git
 
@@ -75,6 +72,9 @@ Ou simplesmente 😊
 
 ### Docker (Frontend + Backend)
 
+#### Requisitos
+Docker 24+ e Docker Compose v2+
+
 ```bash
 git clone https://github.com/luanmykel/tiao-pardinho-collection-frontend.git
 
@@ -83,7 +83,11 @@ docker compose up --build
 docker compose up --build -d
 ```
 
-acesso: http://localhost:8080/
+Acesso: http://localhost:8080/
+
+Admin: http://localhost:8080/admin
+Usuário: admin@teste.com
+Senha:   secret123
 
 O serviço utiliza **Nginx** como servidor web e proxy para o backend, configurado para:
 
@@ -95,12 +99,12 @@ O serviço utiliza **Nginx** como servidor web e proxy para o backend, configura
 
 ## Live Demo
 
-**[Collection Tião Carreiro & Pardinho](https://LINK-AQUI.com)**
+**[Collection Tião Carreiro & Pardinho](https://collection.lmdev.space/)**
+**[Collection Tião Carreiro & Pardinho - Admin](https://collection.lmdev.space/admin)**
 
 ### Credenciais de Acesso
 
 ```
-Admin: http://localhost:8080/admin
 Usuário: admin@teste.com
 Senha:   secret123
 ```
